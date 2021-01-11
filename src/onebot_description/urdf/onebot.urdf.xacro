@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot  xmlns:xacro="http://ros.org/wiki/xacro"
+        name="onebot" >
+
+    <xacro:include filename="$(find onebot_description)/urdf/caster/caster.urdf.xacro" />
+    <xacro:include filename="$(find onebot_description)/urdf/wheel/wheel.urdf.xacro" />
+    <xacro:include filename="$(find onebot_description)/urdf/materials.urdf.xacro" />
+
+
+    <xacro:arg name="mesh_enabled" default="true" />
+
+
+    <link   name = "base_link">
+        <inertial>
+            <origin xyz="-0.10 0 -0.02279" rpy="0 0 0"/>
+            <mass value="1.49159"/>
+            <inertia ixx="0.00888242278" ixy="0.0" ixz="0.00087302844"
+                    iyy="0.00695847544" iyz="-0.0"
+                    izz="0.013496920"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://onebot_description/meshes/base_link.dae" />
+            </geometry>
+            <material name="Blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://onebot_description/meshes/base_link.dae" />
+            </geometry>
+            <material name="Blue" />
+        </collision>
+    </link>
+
+
+    <xacro:caster caster_prefix="rear" parent_link="base_link" >
+        <origin xyz="-0.20 0.0 -0.02533" rpy="0 0 0" />
+    </xacro:caster>
+
+
+    <xacro:wheel wheel_prefix="left" parent_link="base_link" >
+        <origin xyz="-0.04 0.14 -0.045" rpy="0 0 0" />
+    </xacro:wheel>
+
+
+    <xacro:wheel wheel_prefix="right" parent_link="base_link" >
+        <origin xyz="-0.04 -0.14 -0.045" rpy="0 0 0" />
+    </xacro:wheel>
+
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/</robotNamespace>
+        <legacyModeNS>true</legacyModeNS>
+        </plugin>
+    </gazebo>
+
+
+
+    
+
+
+    
+
+
+
+
+</robot>
