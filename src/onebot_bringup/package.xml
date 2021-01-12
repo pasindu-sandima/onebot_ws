@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>onebot_gazebo</name>
+  <name>onebot_bringup</name>
   <version>0.0.0</version>
-  <description>The onebot_gazebo package</description>
+  <description>The onebot_bringup package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

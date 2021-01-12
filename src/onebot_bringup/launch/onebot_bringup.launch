@@ -10,6 +10,8 @@
     <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
     <arg name="gui_required" default="true"/>
+    <arg name="mesh_enabled" default="true"/>
+
 
 
     <arg name="robot_namespace" default="/"/>
@@ -29,33 +31,25 @@
 
 
         <param name="robot_description" command="$(find xacro)/xacro '$(find onebot_description)/urdf/onebot.urdf.xacro'
-            --inorder" />
+            --inorder  mesh_enabled:=$(arg mesh_enabled)" />
 
         <node name="ds_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="  -z 0.0 
                         -urdf 
                         -param robot_description 
                         -model $(arg robot_namespace)" />
 
+
+        <rosparam command="load" file="$(find onebot_control)/config/control.yaml" />
+
+        <node name="base_controller_spawner" pkg="controller_manager" type="spawner" 
+                args="  joint_state_controller
+                        velocity_controller
+                                "/>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        </node>
+
     </group>
-
-
-
-
-
-    <rosparam command="load" file="$(find onebot_control)/config/control.yaml" />
-
-    <node name="base_controller_spawner" pkg="controller_manager" type="spawner" 
-            args="  joint_state_controller
-                    velocity_controller
-                            "/>
-
-
-    
-
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-    </node>
-
-    
 
 </launch>
 

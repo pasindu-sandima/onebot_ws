@@ -52,9 +52,3 @@ velocity_controller:
         max_acceleration       : 0.5  # rad/s^2
         has_jerk_limits        : true
         max_jerk               : 2.5  # rad/s^3
-
-
-# gazebo_ros_control:
-#     pid_gains:
-#         left_wheel: {p: 30,  d: 0, i: 0, i_clamp: 1.}
-#         right_wheel: {p: 30,  d: 0, i: 0, i_clamp: 1.0}

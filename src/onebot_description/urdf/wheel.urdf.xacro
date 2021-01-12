@@ -3,13 +3,6 @@
 <robot name="wheel" xmlns:xacro="http://ros.org/wiki/xacro" >
 
 
-	<!-- Wheel Dimensions -->
-                   
-    <xacro:property name="wheel_length" value="0.032" />
-    <xacro:property name="wheel_radius" value="0.062" />
-    <xacro:property name="wheel_separation" value="0.503" />
-
-
 	<xacro:property name="wheel_kp" value="600000" />
     <xacro:property name="wheel_kd" value="3" />
     <xacro:property name="wheel_mu1" value="10000000" />
@@ -27,7 +20,7 @@
 
 			</inertial>
 			<visual>
-				<material name="Blue"/>
+				<material name="Green"/>
 				<xacro:if value="$(arg mesh_enabled)">
 					<origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
 					<geometry>
@@ -42,7 +35,7 @@
 				</xacro:unless>
 			</visual>
 			<collision>
-				<material name="Blue"/>
+				<material name="Green"/>
 				<origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
 				<geometry>
 						<cylinder length="0.02" radius="0.04688" />
