@@ -35,6 +35,17 @@
     </link>
 
 
+    <link   name =  "base_footprint"/>
+
+
+    <joint name = "base_joint"  type = "fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 0.09188" rpy="0 0 0" />
+        <axis xyz="0 1 0" rpy="0 0 0" />
+    </joint>
+
+
     <xacro:caster caster_prefix="rear" parent_link="base_link" >
         <origin xyz="-0.20 0.0 -0.02533" rpy="0 0 0" />
     </xacro:caster>
